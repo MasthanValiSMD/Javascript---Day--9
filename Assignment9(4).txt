@@ -1,0 +1,28 @@
+
+
+4. Print the total population of countries using reduce function
+
+CODE: 
+
+let xhr = new XMLHttpRequest()
+xhr.open("GET", "https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json")
+xhr.onload = function () {
+    if (xhr.status >= 200 && xhr.status < 300) {
+        var t = JSON.parse(this.response)
+        // console.log(t)
+
+        let pop = t
+            .filter((p) => {
+                return p.population;
+            })
+            .map((p) => {
+                return p.population ;
+            })
+            .reduce((sum, p) => {
+                return sum + p;
+            
+        })
+        console.log(pop)
+    }
+}
+xhr.send()
